@@ -1,4 +1,4 @@
-@import '../../mixins.scss';
+@use '../../mixins.scss';
 
 .dropdown-container {
   position: absolute;
@@ -9,5 +9,5 @@
   border: 1px solid var(--blue-10);
   padding: 0.5rem 1rem;
   border-top: unset;
-  @include shadow()
+  @include mixins.shadow;
 }

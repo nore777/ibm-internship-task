@@ -1,4 +1,4 @@
-@import '../../mixins.scss';
+@use '../../mixins.scss';
 
 .button {
   display: flex;
@@ -10,7 +10,7 @@
   padding: 0 1rem;
   transition: all 0.2s ease;
   align-self: flex-start;
-  @include shadow();
+  @include mixins.shadow;
 
 
 
@@ -22,7 +22,7 @@
   &.button:active {
     filter: brightness(0.92);
     transform: translateX(8px) translateY(8px);
-    @include shadow-closer()
+    @include mixins.shadow-closer;
   }
 
   &.disabled {
