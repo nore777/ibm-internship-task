@@ -1,0 +1,19 @@
+@import '../../mixins.scss';
+
+.textfield {
+  all: unset;
+  outline: none;
+  border-right: 1px solid var(--gray-10);
+  border-bottom: 1px solid var(--gray-10);
+  color: var(--gray-12);
+  border-radius: 0;
+  padding: 0 1rem;
+  width: 100%;
+  @include shadow();
+
+  &:focus-within {
+    border-color: var(--blue-10);
+  }
+
+  box-sizing: border-box;
+}
