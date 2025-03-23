@@ -1,0 +1,13 @@
+@import '../../mixins.scss';
+
+.dropdown-container {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  background-color: var(--blue-1);
+  border: 1px solid var(--blue-10);
+  padding: 0.5rem 1rem;
+  border-top: unset;
+  @include shadow()
+}
