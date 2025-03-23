@@ -1,0 +1,41 @@
+@import '../../mixins.scss';
+
+.button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: auto;
+  border-radius: 0;
+  font-weight: bold;
+  padding: 0 1rem;
+  transition: all 0.2s ease;
+  align-self: flex-start;
+  @include shadow();
+
+
+
+  &.button:hover {
+    filter: brightness(1.08);
+    cursor: pointer;
+  }
+
+  &.button:active {
+    filter: brightness(0.92);
+    transform: translateX(8px) translateY(8px);
+    @include shadow-closer()
+  }
+
+  &.disabled {
+    background-color: var(--gray-5);
+    box-shadow: unset;
+
+    &.button:active {
+      transform: unset;
+    }
+
+    &.button:hover {
+      filter: unset;
+      cursor: unset;
+    }
+  }
+}
