@@ -10,6 +10,7 @@ import { Flex, Grid, Heading, Separator } from "@radix-ui/themes"
 import { useNavigate } from "react-router-dom"
 import { useEffect, useState } from "react"
 import { useAppState } from "../context/StateContext.tsx"
+import useLog from "../hooks/useLog.tsx"
 
 
 export default function Forecast() {
@@ -26,6 +27,7 @@ export default function Forecast() {
     navigate('/')
     return null
   }
+
 
   // TODO: This is a duplicate from header
   const handleMeteoSearch = async () => {
@@ -66,12 +68,15 @@ export default function Forecast() {
 
   }
 
+
   useEffect(() => {
     if (cityData) (
       visit(cityName, parseFloat(lat), parseFloat(lon), cityData?.country_code as string)
     )
     handleMeteoSearch()
     handleCitySearch()
+    useLog(`visited a forecast at ${cityName} [${lat}; ${lon}]`)
+
   }, [lat, lon, cityName])
 
 
