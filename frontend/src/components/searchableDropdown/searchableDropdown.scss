@@ -7,7 +7,16 @@
   width: 100%;
   background-color: var(--blue-1);
   border: 1px solid var(--blue-10);
-  padding: 0.5rem 1rem;
   border-top: unset;
   @include mixins.shadow;
+}
+
+.dropdown-element {
+  padding: var(--space-2);
+}
+
+.dropdown-element:hover {
+  padding: var(--space-2);
+  background-color: var(--blue-3);
+  cursor: pointer;
 }

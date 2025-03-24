@@ -2,17 +2,23 @@ import { useState, useEffect } from "react"
 import SearchableDropdown from "../searchableDropdown"
 import Button from "../button"
 import { Flex, Text } from "@radix-ui/themes"
+import { useNavigate } from "react-router-dom"
+import ICityItem from "../../interface/ICityItem"
+import { useAppState } from "../../context/StateContext"
+import { SunMoon } from "lucide-react"
 
 export default function Header() {
-  const [cities, setCities] = useState({})
+  const [cities, setCities] = useState<ICityItem[] | null>(null)
+  const [item, setItem] = useState<ICityItem | null>(null)
   const [search, setSearch] = useState('')
-  const [data, setData] = useState({})
+  const navigate = useNavigate()
+
+  const { switchTheme } = useAppState()
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSearch(e.target.value)
-    if (e.target.value.length < search.length) {
-      setCities([])
-    }
+    setCities(null)
+    setItem(null)
   }
 
   const handleCitySearch = async () => {
@@ -32,11 +38,15 @@ export default function Header() {
 
   const handleMeteoSearch = async () => {
     try {
-      let response = await fetch(
-        `https://geocoding-api.open-meteo.com/v1/search?name=${search}&count=10`,
-      )
-      response = await response.json()
-      setData(response)
+      if (!item) {
+        await handleCitySearch()
+      }
+
+      navigate(`/forecast?city=${item?.name}&latitude=${item?.latitude}&longitude=${item?.longitude}`, {
+        state: {
+          cityData: item,
+        }
+      })
 
     } catch (error) {
       console.log(error)
@@ -46,14 +56,13 @@ export default function Header() {
   useEffect(() => {
     const timeout = setTimeout(() => {
       handleCitySearch()
-    }, 333);
+    }, 250);
     return () => { clearTimeout(timeout) }
-  }, [search])
+  }, [search, handleCitySearch])
 
 
   return (
     <Flex
-      style={{ backgroundColor: 'var(--mint-1)' }}
       width={{
         initial: '100%',
       }}
@@ -72,16 +81,26 @@ export default function Header() {
           sm: '9'
         }}
       >
-        <Text size={'8'}>☁️weather forecasts</Text>
+        <Flex justify={'between'}>
+          <Text size={'8'}>☁️weather forecasts</Text>
+          <SunMoon style={{ cursor: 'pointer' }} size={32} onClick={switchTheme} />
+        </Flex>
+
         <Flex gap={'3'} mt={"5"} width={"100%"}>
           <SearchableDropdown
             setSearch={(val: string) => setSearch(val)}
+            setItem={(item: Object) => { setItem(item) }}
             data={cities}
             value={search}
             onChange={(e) => { handleChange(e) }}
             placeholder="Start searching for your city..."
           />
-          <Button onClick={() => handleMeteoSearch()} disabled={!search ? true : false}>SEARCH</Button>
+          <Button
+            onClick={() => handleMeteoSearch()}
+            disabled={!item ? true : false}
+          >
+            SEARCH
+          </Button>
         </Flex>
       </Flex>
     </Flex>
