@@ -27,7 +27,6 @@ npm run dev
 Now you're set to test the app!
 
 ```
-```
 ├── backend
 │   ├── src
 │   │   ├── models
@@ -92,5 +91,4 @@ Now you're set to test the app!
 │   ├── tsconfig.node.json
 │   └── vite.config.ts
 └── README.md
-```
 ```
