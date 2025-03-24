@@ -65,19 +65,23 @@ export default function Forecast() {
     } catch (error) {
       console.log(error)
     }
-
   }
 
 
   useEffect(() => {
-    if (cityData) (
-      visit(cityName, parseFloat(lat), parseFloat(lon), cityData?.country_code as string)
-    )
     handleMeteoSearch()
     handleCitySearch()
     useLog(`visited a forecast at ${cityName} [${lat}; ${lon}]`)
 
   }, [lat, lon, cityName])
+
+  useEffect(() => {
+    const timeout = setTimeout(() => {
+      visit(cityName, parseFloat(lat), parseFloat(lon), cityData?.country_code as string)
+    }, 200)
+
+    return () => clearTimeout(timeout)
+  }, [cityData])
 
 
   if (!forecastData || !cityData) return <>Loading...</>
