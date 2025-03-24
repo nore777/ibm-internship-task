@@ -67,7 +67,9 @@ export default function Forecast() {
   }
 
   useEffect(() => {
-    visit(cityName, parseFloat(lat), parseFloat(lon), cityData?.country_code as string)
+    if (cityData) (
+      visit(cityName, parseFloat(lat), parseFloat(lon), cityData?.country_code as string)
+    )
     handleMeteoSearch()
     handleCitySearch()
   }, [lat, lon, cityName])

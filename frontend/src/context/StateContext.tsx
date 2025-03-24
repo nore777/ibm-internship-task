@@ -64,6 +64,7 @@ function StateProvider({ children }: StateProviderProps) {
 
   // Before we close, we snip the topCities object to only store top 3 cities and save it to local storage
   const handleBeforeUnload = () => {
+
     setTopCities((prevItems) => {
       const keys = Object.keys(prevItems);
 
@@ -75,7 +76,7 @@ function StateProvider({ children }: StateProviderProps) {
       localStorage.setItem('cities', JSON.stringify(slice))
 
       return slice;
-    });
+    })
   };
 
 
