@@ -1,0 +1,7 @@
+@use '../../mixins.scss';
+
+.forecast-card {
+  border: 1px solid var(--blue-10);
+  padding: var(--space-5);
+  @include mixins.shadow;
+}
