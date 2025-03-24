@@ -1,16 +1,14 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
-import { Theme } from '@radix-ui/themes'
+import StateProvider from './context/StateContext.tsx'
 import App from './App.tsx'
 import './index.css'
 
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
-    <Theme appearance='light'>
-      <div className='app-container'>
-        <App />
-      </div>
-    </Theme>
+    <StateProvider>
+      <App />
+    </StateProvider>
   </StrictMode>,
 )
