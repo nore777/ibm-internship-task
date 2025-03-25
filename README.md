@@ -1,5 +1,15 @@
 # IBM internship task
+
+## About
 This is a React and Node.js application developed in TypeScript specifically for the internship task assigned by IBM.
+The Node.js backend uses Express framework to handle logging user interactions both into console and MongoDB database.
+The only React frontend dependencies are Radix Themes, Lucide and SASS for styling and React Router Dom for navigation.
+Everything else is developed using built in React and Javascript functionality - like Context for state management, fetch for 
+HTTP requests and so on...
+
+This app is deployed to AWS, you can find it here:
+https://main.d1mut42q63br5a.amplifyapp.com/
+> **Note:** this tries to make a log request to localhost, also the backend side of this project is not hosted on AWS
 
 ## Setup
 To test out this application locally you'll need to run the React client and Node.js server separately like so:
@@ -26,69 +36,29 @@ npm run dev
 
 Now you're set to test the app!
 
+
+## Project Structure
 ```
 ├── backend
-│   ├── src
-│   │   ├── models
-│   │   │   └── logSchema.ts
-│   │   ├── routes
-│   │   │   └── logRoute.ts
-│   │   └── index.ts
-│   ├── package.json
-│   ├── package-lock.json
-│   └── tsconfig.json
-│
+│   └── src
+│       ├── models
+│       └── routes
 │
 ├── frontend
 │   ├── public
-│   │   └── vite.svg
-│   ├── src
-│   │   ├── assets
-│   │   │   └── react.svg
-│   │   ├── components
-│   │   │   ├── button
-│   │   │   │   ├── button.scss
-│   │   │   │   └── index.tsx
-│   │   │   ├── forecast
-│   │   │   │   ├── CityHeader.tsx
-│   │   │   │   ├── ForecastCard.scss
-│   │   │   │   ├── ForecastCard.tsx
-│   │   │   │   └── ForecastCurrent.tsx
-│   │   │   ├── header
-│   │   │   │   └── index.tsx
-│   │   │   ├── layout
-│   │   │   │   └── index.tsx
-│   │   │   ├── searchableDropdown
-│   │   │   │   ├── index.tsx
-│   │   │   │   └── searchableDropdown.scss
-│   │   │   └── textfield
-│   │   │       ├── index.tsx
-│   │   │       └── textfield.scss
-│   │   ├── context
-│   │   │   └── StateContext.tsx
-│   │   ├── hooks
-│   │   │   └── useLog.tsx
-│   │   ├── interface
-│   │   │   ├── ICityItem.tsx
-│   │   │   └── IForecastData.tsx
-│   │   ├── pages
-│   │   │   ├── Forecast.tsx
-│   │   │   └── Home.tsx
-│   │   ├── utils
-│   │   │   └── formatDate.ts
-│   │   ├── App.tsx
-│   │   ├── index.css
-│   │   ├── main.tsx
-│   │   ├── mixins.scss
-│   │   └── vite-env.d.ts
-│   ├── eslint.config.js
-│   ├── index.html
-│   ├── package.json
-│   ├── package-lock.json
-│   ├── README.md
-│   ├── tsconfig.app.json
-│   ├── tsconfig.json
-│   ├── tsconfig.node.json
-│   └── vite.config.ts
+│   └── src
+│       ├── assets
+│       ├── components
+│       │   ├── button
+│       │   ├── forecast
+│       │   ├── header
+│       │   ├── layout
+│       │   ├── searchableDropdown
+│       │   └── textfield
+│       ├── context
+│       ├── hooks
+│       ├── interface
+│       ├── pages
+│       └── utils
 └── README.md
 ```
