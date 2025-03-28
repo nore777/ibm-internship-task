@@ -58,7 +58,7 @@ export default function Header() {
       handleCitySearch()
     }, 250);
     return () => { clearTimeout(timeout) }
-  }, [search, handleCitySearch])
+  }, [search])
 
 
   return (
